@@ -1,3 +1,9 @@
-# Rock, Paper, Scissors - Game
+# Jack 'n Poy (Rock, Paper, Scissors Game)
 
-The game of Rock-Paper-Scissors against the computer.
+Play the game against the computer!
+
+## Deployment
+
+```bash
+https://shaunniekins.github.io/rock-paper-scissors_game/
+```

@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+header {
+    min-height: 10vh;
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    background: lightblue;
+    min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game_title {
+    font-weight: bold;
+    font-size: 50px;
+    padding: 2rem;
+}
+
+.content {
+    margin: 4rem auto;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#scores {
+    font-size: 50px;
+    font-weight: normal;
+}
+
+#game_descrip {
+    margin: 1rem auto 3rem auto;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+    min-height: 5rem;
+}
+
+.boxes {
+    margin: 1rem auto;
+    display: flex;
+    gap: 3rem;
+}
+
+.box {
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 4px 5px 0px black;
+    min-height: 10rem;
+    width: 12rem;
+    font-size: 20px;
+
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box > img {
+    width: 55%;
+}
+
+.box:hover {
+    border: 2px solid black;
+    box-shadow: 4px 5px 0px black;
+    transform: scale(1.10, 1.10);
+    transition: 0.25s;
+}
+
+.box:active {
+    background: red;
+}
+
+.dashboard {
+    margin: 2rem auto;
+    display: inherit;
+    gap: 5rem;
+}
+.side {
+    font-size: 40px;
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.side > #user_weapon,
+.side > #computer_weapon {
+    margin-top: 1rem;
+    font-size: 25px;
+}
+
+footer {
+    min-height: 3vh;
+    background: black;
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-weight: 18px;
+}
+
+@media only screen and (max-width: 1100px) {
+    /* For mobile phones: */
+    .boxes,
+    .dashboard {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    #game_title {
+        font-weight: bold;
+        font-size: 40px;
+        padding: 1rem;
+    }
+  }

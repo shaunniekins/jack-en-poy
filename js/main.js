@@ -1,51 +1,69 @@
+let scores = document.querySelector("#scores");
+let description = document.querySelector("#game_descrip");
+let userWeapon = document.querySelector("#user_weapon");
+let computerWeapon = document.querySelector("#computer_weapon");
+const chosenWeapon = document.querySelectorAll(".box");
+
+let playerScore = 0;
+let computerScore = 0;
+//let playerSelection;
+chosenWeapon.forEach(chosenWeapon_1 => 
+  chosenWeapon_1.addEventListener('click', () => {
+    if (playerScore >= 5 || computerScore >= 5) {
+      return;
+    }
+    game(chosenWeapon_1.getAttribute("id"))
+    }
+));
+
 /* Random sign for Computer's turn */
 function computerPlay() {
-  const signs = ["rock", "paper", "scissors"];
-  const sign = signs[Math.floor(Math.random()*signs.length)];
+  let signs = ["rock", "paper", "scissors"];
+  let sign = signs[Math.floor(Math.random()*signs.length)];
 
   return sign;
 }
-//console.log(computerPlay());
 
-
-/* Result if the user wins or loses */
-let playerScore = 0;
-let computerScore = 0;
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === null || playerSelection === undefined) {
-    return false;
-  }else if (playerSelection == computerSelection) {
-    return "Draw";
-  } else if (playerSelection === "rock" && computerSelection === "scissors"
-    || playerSelection === "paper" && computerSelection === "rock"
-    || playerSelection === "scissors" && computerSelection === "paper") {
+  let log = "";
+
+  if (playerSelection == computerSelection) {
+    log = "Draw\n";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") || 
+    (playerSelection === "paper" && computerSelection === "rock") || 
+    (playerSelection === "scissors" && computerSelection === "paper")) {
+    
+    //scores.innerText = `${playerScore}   -    ${computerScore}`;
+    log = `You win!\n${playerSelection} beats ${computerSelection}.`;
+  } else {
+    //computerScore++;
+    //scores.innerText = `${playerScore}   -    ${computerScore}`;
+    log = `You lose!\n${computerSelection} beats ${playerSelection}.`;
+  }
+  return log;
+}
+
+function game(playerSelection) {
+  let computerSelection = computerPlay();
+  computerWeapon.innerText = `${computerSelection}`;
+  userWeapon.innerText = `${playerSelection}`;
+
+  let roundResult = playRound(playerSelection, computerSelection);
+
+
+  if (roundResult.search('You win!') > -1) {
     playerScore++;
-    return `You win! ${playerSelection} beats ${computerSelection}.`;
-  } else {
+  } else if (roundResult.search('You lose!') > -1) {
     computerScore++;
-    return `You lose! ${computerSelection} beats ${playerSelection}.`;
+  }
+  
+  scores.innerText = `${playerScore}   -    ${computerScore}`;
+  description.innerText = roundResult;
+
+  if (playerScore >= 5 && computerScore < 5) {
+    description.innerText = "GAME OVER.\nYOU ARE THE WINNER!";
+  } else if (playerScore < 5 && computerScore >= 5) {
+    description.innerText = "GAME OVER.\nYOU ARE THE LOSER!";
   }
 }
-const computerSelection = computerPlay();
-
-//console.log(playRound(playerSelection, computerSelection));
-
-/* Repetition of games */
-function game() {
-  for(let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Enter your choice: ", ).toLowerCase();
-    //playRound(playerSelection, computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-    console.log("Player: " + playerScore);
-    console.log("Computer: " + computerScore);
-  }
-  if (playerScore > computerScore) {
-    console.log("WINNER");
-  } else if (playerScore < computerScore) {
-    console.log("LOSER")
-  } else {
-    console.log("DRAW");
-  }
-}
-
-game();
