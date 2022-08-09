@@ -2,8 +2,4 @@
 
 Play the game against the computer!
 
-## Deployment
-
-```bash
-https://shaunniekins.github.io/rock-paper-scissors_game/
-```
+[Live Demo](https://shaunniekins.github.io/rock-paper-scissors_game/)
